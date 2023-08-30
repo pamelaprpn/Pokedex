@@ -1,30 +1,35 @@
 (async () => {
 
     const request = new Request('https://pokeapi.co/api/v2/pokemon/')
-    const reqPokeFire = new Request('')
-    //const config = {method: 'get'}
+    const config = {method: 'get'}
+    const dfrag = document.createDocumentFragment()
+    const ul = document.getElementById('listaPokemon')
+   
 
-    const listPoke = await fetch(request, { method: 'get' })
+    const listPoke = await fetch(request, config)
         .then((data) => data.json()
         .then(data => data.results))    
         .catch((error) => {
             console.log(error)
         })
 
-    //console.log(listPoke[0].url)
+    listPoke.map(function(pokemon){
+        let li = document.createElement('li')
+        let ancora = document.createElement('a')
+        console.log(li)
+        console.log(ancora)
 
+        ancora.setAttribute('href', `${pokemon.url}`)
+        ancora.innerHTML = `${pokemon.name}` 
 
-    for(let i = 0; i < listPoke.length; i++){
+        li.appendChild(ancora)  
         
-        const newP = document.createElement('p')
-        const newA = document.createElement('a');
-        
-        console.log(newP)
-        console.log(newA )
-        newA.setAttribute('href', listPoke[i].url)
-        newP.appendChild(newA)
-   }
+        dfrag.appendChild(li)
 
+    })
+
+    document.getElementById('listaPokemon').appendChild(dfrag)
+    
 
 })()
 
