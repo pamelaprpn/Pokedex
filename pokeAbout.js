@@ -1,55 +1,34 @@
-(async () => {
+const getPokemonUrl = (id) => `https://pokeapi.co/api/v2/pokemon/${id}`
 
-    const request = new Request('https://pokeapi.co/api/v2/pokemon/')
-    const config = {method: 'get'}
-    const dfrag = document.createDocumentFragment()
-    
-   
 
-    const listPoke = await fetch(request, config)
-        .then((data) => data.json()
-        .then(data => data.results))    
-        .catch((error) => {
-            console.log(error)
+const fetchPokemon = () => {
+    const pokemonPromisses = [];
+
+    for (let i=1; i<=1010; i++){
+        pokemonPromisses.push(
+            fetch(getPokemonUrl(i)).then((resp) => resp.json())
+        );
+    }
+
+    Promise.all(pokemonPromisses).then((pokemons) => {
+        const listPokemons = pokemons.reduce((accumulator, pokemon) => {
+            const types = pokemon.types.map((typeInfo) => typeInfo.type.name);
+
+            accumulator += `
+            <li class = "card ${types[0]}">
+            <img class = "card-image" alt = "${pokemon.name}" 
+            src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png">
+            <h2 class = "card-title">${pokemon.name}</h2>
+            <p class = "card-type">${types.join(" <br> ")}</p>
+            </li>`
+
+            return accumulator;
+
         })
 
-    listPoke.map(function(pokemon){
-        let li = document.createElement('li')
-        let ancora = document.createElement('a')
-
-        ancora.setAttribute('href', 'pokeAbout.html')
-        ancora.innerHTML = `${pokemon.name}` 
-
-        li.appendChild(ancora)  
-        
-        dfrag.appendChild(li)
-
+        const ul = document.querySelector('#listaPokemon')
+        ul.innerHTML = listPokemons;
     })
+}
 
-    document.getElementById('listaPokemon').appendChild(dfrag)
-
-    for(let i = 1; i <= listPoke.length; i++){
-       let teste = `https://pokeapi.co/api/v2/pokemon/${[i]}`;
-       console.log(teste)
-
-       const listAboutPokemon = await fetch(teste, config)
-       .then((data) => data.json() 
-       .then(data => data.results))
-       .catch((err) => {
-        console.log(err)
-       })
-
-       listAboutPokemon.map(function(aboutPokemon){
-        let liPokemon = document.createElement('li')
-        
-
-        console.log(liPokemon)
-        
-
-       })
-    }
-    
-
-})()
-
-
+fetchPokemon();
