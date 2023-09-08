@@ -1,2 +1,2 @@
 # PokeAPI
-Consumo de API 
+Consumo de API usando Fetch API
