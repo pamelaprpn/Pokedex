@@ -4,6 +4,8 @@ const getPokemonUrl = (id) => `https://pokeapi.co/api/v2/pokemon/${id}`
 const fetchPokemon = () => {
     const pokemonPromisses = [];
 
+    
+    
     for (let i=1; i<=1010; i++){
         pokemonPromisses.push(
             fetch(getPokemonUrl(i)).then((resp) => resp.json())
@@ -15,11 +17,11 @@ const fetchPokemon = () => {
             const types = pokemon.types.map((typeInfo) => typeInfo.type.name);
 
             accumulator += `
-            <li class = "card ${types[0]}">
+            <li class = "card-${types[0]}">
             <img class = "card-image" alt = "${pokemon.name}" 
             src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png">
             <h2 class = "card-title">${pokemon.name}</h2>
-            <p class = "card-type">${types.join(" <br> ")}</p>
+            <p class = "card-type-${types[0]}">${types.join(" <br> ")}</p>
             </li>`
 
             return accumulator;
