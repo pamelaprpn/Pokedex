@@ -4,18 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Pokemons 1 Geração</title>
     <link rel="stylesheet" href="css/index.css">
 
 </head>
 
 <body>
 
-    <h1> Pokemons</h1><br>
+    <header>
+        <img id="imgHeader" src="img/pokemon_capa.jpg"/>
+    </header>
 
-    <ul id="listaPokemon"></ul>
+    <nav class="busca" >
+        <img id="imgSearch" src="img/search_3.png" alt="Buscar..."/>
+        <input type="text" id="txtSearch" placeholder="Buscar..."/>
+        <button id="btnSearch">Buscar</button>
+    </nav>
 
+
+    <section>
+        
     
+        <ul id="listaPokemon"></ul>
+    
+    </section>
+
     <script src="js/pokeAbout.js"></script>
 
    
