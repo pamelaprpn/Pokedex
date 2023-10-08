@@ -57,7 +57,24 @@ nav{
     
 }
 
-.card-image{
+#cardPokemon{
+    background-color: #fb6c6c;
+    border-radius: 20px;
+    margin: 10px;
+    opacity: 70%;
+    font-family: 'Open Sans', sans-serif;
+    padding: 20px 20px 20px 20px;
+}
+
+#imgPokemon{
+
+}
+
+#idPokemon{
+
+}
+
+/* .card-image{
     image-orientation: from-image;
     
 }
@@ -242,4 +259,4 @@ nav{
     font-family: 'Open Sans', sans-serif;
     padding: 20px 20px 20px 20px;
 }
-
+ */
