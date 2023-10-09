@@ -34,14 +34,16 @@ function populatePokemon(pokemonData){
 
     let pokeImg = document.createElement("img")
     pokeImg.setAttribute("id", "imgPokemon")
-    pokeImg.innerHTML = pokemonData.sprites.front_default
-
+    pokeImg.setAttribute("src", `${pokemonData.sprites.other.home.front_default}`)
+    pokeImg.setAttribute("width", 200)
+    pokeImg.setAttribute("height", 200)
+    pokeImg.innerHTML
     
     let pokeName = document.createElement("h2")
     pokeName.setAttribute("id", "idPokemon")
     pokeName.innerHTML = pokemonData.name
 
-    let pokeType = document.createElement('p');
+    let pokeType = document.createElement('ul');
     pokeType.setAttribute("id", "typePokemon")
 
     populateTypes(pokemonData.types, pokeType);
@@ -50,18 +52,17 @@ function populatePokemon(pokemonData){
 
     allPokemon.appendChild(card);
       
-    //console.log(typeP)
+    
 }
 
     
       
-
-
-function populateTypes(types, p){
+function populateTypes(types, ul){
     types.forEach(function(typeInfo){
-        const dataType = typeInfo.type.name
-        p.append (dataType)
-        //console.log(p)
+        let li = document.createElement('li');
+        li.innerText = typeInfo.type.name 
+        ul.append(li)
+        
     })
 }
 
