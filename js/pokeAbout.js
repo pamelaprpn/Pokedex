@@ -67,3 +67,15 @@ function populateTypes(types, ul){
 }
 
 
+function loadMore(pokemon){
+    const loadMoreButton = document.getElementById("load-more");
+    const cardCountElem = document.getElementById("card-count");
+    const cardTotalElem = document.getElementById("card-total");
+
+    const cardLimite = 151
+    
+}
+
+loadMore();
+
+
